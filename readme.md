@@ -17,6 +17,7 @@ This is a standard Laravel installation, nothing special. Just run `composer ins
 * List of users with profile pages
 * A logged out front page
 * Game cover images (hello legal minefield!)
+* Easier way to add platform image icons, not based off folder names
 
 ## License and Credits
 
