@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Platforms;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Gamelist;
 
@@ -27,8 +28,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $gameData = new Gamelist();
-        $games = $gameData->getGames();
+        $id = Auth::id();
+        $games = Gamelist::where('ownedby', '=', $id)->get();
         $platforms = Platforms::all()->sortBy('platform_neat');
         return view('home')->with(compact('games', 'platforms'));
     }

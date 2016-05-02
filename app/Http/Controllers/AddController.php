@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
 use App\Http\Requests;
@@ -29,6 +31,8 @@ class AddController extends Controller
         $gameData->platform = $inputs['platform'];
         $gameData->title = $inputs['title'];
         $gameData->copies = $inputs['copies'];
+        $gameData->ownedby = Auth::id();
+
 
         if($gameData->save()) {
             return redirect('/')->with('status', 'Game added!');
@@ -44,6 +48,7 @@ class AddController extends Controller
 
         $platformData->platform_id = $inputs['imgfolder'];
         $platformData->platform_neat = $inputs['platform'];
+        $platformData->ownedby = Auth::id();
 
         if($platformData->save()) {
             return redirect('platforms')->with('status', 'Platform added!');

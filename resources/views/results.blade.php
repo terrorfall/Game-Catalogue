@@ -52,8 +52,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <?php
-                            foreach ($games as $game) { ?>
+                            @foreach ($games as $game)
                             <tr>
                                 <td><?= $game->title; ?></td>
                                 <td><img src="assets/img/platforms/<?= $game->platform; ?>/16x16.png" /> <?= ucfirst($game->platform); ?></td>
@@ -61,8 +60,7 @@
                                 <td><?= $game->copies; ?></td>
                                 <td><a href="edit/<?= $game->id;?>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> | <a href="delete/<?= $game->id;?>"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
                             </tr>
-                            <?php }
-                        ?>
+                            @endforeach
                         </tbody>
                     </table>
                     @else

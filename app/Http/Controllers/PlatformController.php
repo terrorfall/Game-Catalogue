@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Platforms;
+use Illuminate\Support\Facades\Auth;
 
 class PlatformController extends Controller
 {
@@ -14,7 +15,8 @@ class PlatformController extends Controller
     }
 
     public function index() {
-        $platforms = Platforms::all()->sortBy("platform_neat");
+        $id = Auth::id();
+        $platforms = Platforms::where('ownedby', '=', $id)->orderBy('platform_neat')->get();
         return view('platform', ['platforms' => $platforms]);
     }
 

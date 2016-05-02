@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Platforms extends Migration
+class Gamelist extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,12 @@ class Platforms extends Migration
      */
     public function up()
     {
-        Schema::create('platforms', function (Blueprint $table) {
+        Schema::create('gamelist', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('platform_id');
-            $table->string('platform_neat');
+            $table->string('platform');
+            $table->string('title');
+            $table->integer('copies');
+            $table->integer('ownedby');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class Platforms extends Migration
      */
     public function down()
     {
-        Schema::drop('platforms');
+        Schema::drop('gamelist');
     }
 }
